@@ -13,7 +13,6 @@ import { app, server } from "./socket/socket.js";
 
 dotenv.config();
 
-const __dirname = path.resolve();
 // PORT should be assigned after calling dotenv.config() because we need to access the env variables. Didn't realize while recording the video. Sorry for the confusion.
 const PORT = process.env.PORT || 5000;
 
@@ -27,8 +26,6 @@ app.use(cors({
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
-
-app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
 app.get("/", (req, res) => {
 	res.send("Server is running");
